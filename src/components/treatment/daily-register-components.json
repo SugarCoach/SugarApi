@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_daily_register_daily_register_components",
+  "info": {
+    "displayName": "Treatment Component",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "treatments",
+  "info": {
+    "singularName": "treatment",
+    "pluralName": "treatments",
+    "displayName": "Treatment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "online_id": {
+      "type": "uid"
+    },
+    "bomb": {
+      "type": "boolean"
+    },
+    "object_glucose": {
+      "type": "decimal"
+    },
+    "correctora_unit": {
+      "type": "decimal"
+    },
+    "hyperglucose": {
+      "type": "decimal"
+    },
+    "hipoglucose": {
+      "type": "decimal"
+    },
+    "correctora": {
+      "type": "decimal"
+    },
+    "insulina_unit": {
+      "type": "decimal"
+    },
+    "carbono": {
+      "type": "decimal"
+    },
+    "basal_insuline": {
+      "type": "component",
+      "repeatable": false,
+      "component": "treatment.daily-register-components"
+    },
+    "medidor": {
+      "type": "component",
+      "repeatable": false,
+      "component": "treatment.daily-register-components"
+    },
+    "bomba_infusora": {
+      "type": "component",
+      "repeatable": false,
+      "component": "treatment.daily-register-components"
+    },
+    "correctora_insuline": {
+      "type": "component",
+      "repeatable": false,
+      "component": "treatment.daily-register-components"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

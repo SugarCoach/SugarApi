@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_daily_register_daily_register_component",
+  "info": {
+    "displayName": "DailyRegister-Component"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
