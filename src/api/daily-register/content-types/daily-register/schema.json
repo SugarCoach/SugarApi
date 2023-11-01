@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "daily_registers",
+  "info": {
+    "singularName": "daily-register",
+    "pluralName": "daily-registers",
+    "displayName": "Daily Register"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "glucose": {
+      "type": "decimal"
+    },
+    "insulin": {
+      "type": "decimal"
+    },
+    "carbohydrates": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "basal": {
+      "type": "decimal"
+    },
+    "colors": {
+      "type": "string"
+    },
+    "dataS": {
+      "type": "time"
+    },
+    "created": {
+      "type": "date"
+    },
+    "emotional_state": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daily-register.daily-register-component"
+    },
+    "excercise": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daily-register.daily-register-component"
+    },
+    "category": {
+      "type": "string"
+    }
+  }
+}

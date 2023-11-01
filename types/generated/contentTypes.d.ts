@@ -362,54 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTreatmentTreatment extends Schema.CollectionType {
-  collectionName: 'treatments';
-  info: {
-    singularName: 'treatment';
-    pluralName: 'treatments';
-    displayName: 'Treatment';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    online_id: Attribute.UID;
-    bomb: Attribute.Boolean;
-    object_glucose: Attribute.Decimal;
-    correctora_unit: Attribute.Decimal;
-    hyperglucose: Attribute.Decimal;
-    hipoglucose: Attribute.Decimal;
-    correctora: Attribute.Decimal;
-    insulina_unit: Attribute.Decimal;
-    carbono: Attribute.Decimal;
-    basal_insuline: Attribute.Component<'treatment.daily-register-components'>;
-    medidor: Attribute.Component<'treatment.daily-register-components'>;
-    bomba_infusora: Attribute.Component<'treatment.daily-register-components'>;
-    correctora_insuline: Attribute.Component<'treatment.daily-register-components'>;
-    users_permissions_user: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -725,6 +677,95 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
+  collectionName: 'daily_registers';
+  info: {
+    singularName: 'daily-register';
+    pluralName: 'daily-registers';
+    displayName: 'Daily Register';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    glucose: Attribute.Decimal;
+    insulin: Attribute.Decimal;
+    carbohydrates: Attribute.Decimal;
+    comment: Attribute.String;
+    photo: Attribute.Media;
+    basal: Attribute.Decimal;
+    colors: Attribute.String;
+    dataS: Attribute.Time;
+    created: Attribute.Date;
+    emotional_state: Attribute.Component<'daily-register.daily-register-component'>;
+    excercise: Attribute.Component<'daily-register.daily-register-component'>;
+    category: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentTreatment extends Schema.CollectionType {
+  collectionName: 'treatments';
+  info: {
+    singularName: 'treatment';
+    pluralName: 'treatments';
+    displayName: 'Treatment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    online_id: Attribute.UID;
+    bomb: Attribute.Boolean;
+    object_glucose: Attribute.Decimal;
+    correctora_unit: Attribute.Decimal;
+    hyperglucose: Attribute.Decimal;
+    hipoglucose: Attribute.Decimal;
+    correctora: Attribute.Decimal;
+    insulina_unit: Attribute.Decimal;
+    carbono: Attribute.Decimal;
+    basal_insuline: Attribute.Component<'treatment.daily-register-components'>;
+    medidor: Attribute.Component<'treatment.daily-register-components'>;
+    bomba_infusora: Attribute.Component<'treatment.daily-register-components'>;
+    correctora_insuline: Attribute.Component<'treatment.daily-register-components'>;
+    users_permissions_user: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -735,13 +776,14 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::treatment.treatment': ApiTreatmentTreatment;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
+      'api::treatment.treatment': ApiTreatmentTreatment;
     }
   }
 }
