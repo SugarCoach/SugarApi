@@ -4,7 +4,8 @@
   "info": {
     "singularName": "daily-register",
     "pluralName": "daily-registers",
-    "displayName": "Daily Register"
+    "displayName": "Daily Register",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,14 +25,15 @@
       "type": "string"
     },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "basal": {
       "type": "decimal"
@@ -57,6 +59,11 @@
     },
     "category": {
       "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
