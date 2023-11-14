@@ -381,8 +381,6 @@ export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
     photo: Attribute.Media;
     basal: Attribute.Decimal;
     colors: Attribute.String;
-    dataS: Attribute.Time;
-    created: Attribute.Date;
     emotional_state: Attribute.Component<'daily-register.daily-register-component'>;
     excercise: Attribute.Component<'daily-register.daily-register-component'>;
     category: Attribute.String;
@@ -726,7 +724,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -755,6 +752,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    FirebaseUID: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

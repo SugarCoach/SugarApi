@@ -17,6 +17,7 @@
     "better-sqlite3": "8.6.0",
     "node-postgres": "^0.6.2",
     "pg": "^8.11.3",
+    "strapi-advanced-uuid": "^1.1.4",
     "strapi-connector-firestore": "^3.0.0-alpha.47"
   },
   "author": {
