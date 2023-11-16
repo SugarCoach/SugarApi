@@ -68,6 +68,9 @@
     "FirebaseUID": {
       "type": "uid",
       "required": true
+    },
+    "online_id": {
+      "type": "string"
     }
   }
 }
