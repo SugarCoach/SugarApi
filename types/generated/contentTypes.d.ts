@@ -419,7 +419,6 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    online_id: Attribute.UID;
     bomb: Attribute.Boolean;
     object_glucose: Attribute.Decimal;
     correctora_unit: Attribute.Decimal;

@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "online_id": {
-      "type": "uid"
-    },
     "bomb": {
       "type": "boolean"
     },
