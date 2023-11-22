@@ -427,15 +427,15 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
     correctora: Attribute.Decimal;
     insulina_unit: Attribute.Decimal;
     carbono: Attribute.Decimal;
-    basal_insuline: Attribute.Component<'treatment.daily-register-components'>;
-    medidor: Attribute.Component<'treatment.daily-register-components'>;
-    bomba_infusora: Attribute.Component<'treatment.daily-register-components'>;
-    correctora_insuline: Attribute.Component<'treatment.daily-register-components'>;
     users_permissions_user: Attribute.Relation<
       'api::treatment.treatment',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    basal: Attribute.String;
+    medidor: Attribute.String;
+    bomba_infusora: Attribute.String;
+    correctora_insuline: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

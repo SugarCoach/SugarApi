@@ -36,30 +36,22 @@
     "carbono": {
       "type": "decimal"
     },
-    "basal_insuline": {
-      "type": "component",
-      "repeatable": false,
-      "component": "treatment.daily-register-components"
-    },
-    "medidor": {
-      "type": "component",
-      "repeatable": false,
-      "component": "treatment.daily-register-components"
-    },
-    "bomba_infusora": {
-      "type": "component",
-      "repeatable": false,
-      "component": "treatment.daily-register-components"
-    },
-    "correctora_insuline": {
-      "type": "component",
-      "repeatable": false,
-      "component": "treatment.daily-register-components"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "basal": {
+      "type": "string"
+    },
+    "medidor": {
+      "type": "string"
+    },
+    "bomba_infusora": {
+      "type": "string"
+    },
+    "correctora_insuline": {
+      "type": "string"
     }
   }
 }
