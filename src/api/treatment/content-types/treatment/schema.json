@@ -36,12 +36,7 @@
     "carbono": {
       "type": "decimal"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
-    "basal": {
+    "basal_insuline": {
       "type": "string"
     },
     "medidor": {
@@ -52,6 +47,12 @@
     },
     "correctora_insuline": {
       "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "treatment"
     }
   }
 }

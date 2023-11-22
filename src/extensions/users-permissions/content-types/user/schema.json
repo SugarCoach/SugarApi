@@ -71,6 +71,12 @@
     },
     "online_id": {
       "type": "string"
+    },
+    "treatment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment.treatment",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

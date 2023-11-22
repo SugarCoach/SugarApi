@@ -427,15 +427,15 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
     correctora: Attribute.Decimal;
     insulina_unit: Attribute.Decimal;
     carbono: Attribute.Decimal;
+    basal_insuline: Attribute.String;
+    medidor: Attribute.String;
+    bomba_infusora: Attribute.String;
+    correctora_insuline: Attribute.String;
     users_permissions_user: Attribute.Relation<
       'api::treatment.treatment',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    basal: Attribute.String;
-    medidor: Attribute.String;
-    bomba_infusora: Attribute.String;
-    correctora_insuline: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -753,6 +753,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     FirebaseUID: Attribute.UID & Attribute.Required;
     online_id: Attribute.String;
+    treatment: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
