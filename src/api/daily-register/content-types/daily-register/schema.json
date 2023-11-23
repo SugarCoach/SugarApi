@@ -41,16 +41,6 @@
     "colors": {
       "type": "string"
     },
-    "emotional_state": {
-      "type": "component",
-      "repeatable": false,
-      "component": "daily-register.daily-register-component"
-    },
-    "excercise": {
-      "type": "component",
-      "repeatable": false,
-      "component": "daily-register.daily-register-component"
-    },
     "category": {
       "type": "string"
     },
@@ -58,6 +48,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "emotional_state": {
+      "type": "string"
+    },
+    "excercise": {
+      "type": "string"
     }
   }
 }

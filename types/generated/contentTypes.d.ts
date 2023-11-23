@@ -381,14 +381,14 @@ export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
     photo: Attribute.Media;
     basal: Attribute.Decimal;
     colors: Attribute.String;
-    emotional_state: Attribute.Component<'daily-register.daily-register-component'>;
-    excercise: Attribute.Component<'daily-register.daily-register-component'>;
     category: Attribute.String;
     users_permissions_user: Attribute.Relation<
       'api::daily-register.daily-register',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    emotional_state: Attribute.String;
+    excercise: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
