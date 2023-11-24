@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users_data",
+  "info": {
+    "singularName": "user-data",
+    "pluralName": "users-data",
+    "displayName": "User Data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "birth_date": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "debut_date": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "integer"
+    }
+  }
+}

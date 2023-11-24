@@ -454,6 +454,42 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserDataUserData extends Schema.CollectionType {
+  collectionName: 'users_data';
+  info: {
+    singularName: 'user-data';
+    pluralName: 'users-data';
+    displayName: 'User Data';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String;
+    birth_date: Attribute.String;
+    sex: Attribute.String;
+    height: Attribute.Decimal;
+    weight: Attribute.Decimal;
+    debut_date: Attribute.String;
+    icon: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -787,6 +823,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
       'api::treatment.treatment': ApiTreatmentTreatment;
+      'api::user-data.user-data': ApiUserDataUserData;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
