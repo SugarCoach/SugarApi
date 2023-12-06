@@ -77,6 +77,12 @@
       "relation": "oneToOne",
       "target": "api::treatment.treatment",
       "mappedBy": "users_permissions_user"
+    },
+    "user_datum": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-data.user-data",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

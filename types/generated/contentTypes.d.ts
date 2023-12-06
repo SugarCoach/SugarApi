@@ -460,18 +460,24 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
     singularName: 'user-data';
     pluralName: 'users-data';
     displayName: 'User Data';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Nombre: Attribute.String;
+    name: Attribute.String;
     birth_date: Attribute.String;
     sex: Attribute.String;
     height: Attribute.Decimal;
     weight: Attribute.Decimal;
     debut_date: Attribute.String;
     icon: Attribute.Integer;
+    users_permissions_user: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -793,6 +799,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToOne',
       'api::treatment.treatment'
+    >;
+    user_datum: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::user-data.user-data'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
