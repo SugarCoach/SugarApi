@@ -2,24 +2,22 @@ const path = require('path');
 const parse = require('pg-connection-string').parse;
 const config = parse(process.env.DATABASE_URL)
 
-
 module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
     connection: {
-      host: env("DATABASE_HOST", "127.0.0.1"),
+      host: env("DATABASE_HOST", "sugar-backendapp-dbinstance-cnih3mh6qrnl.cmoghtwgghmz.us-east-1.rds.amazonaws.com"),
       port: env.int("DATABASE_PORT", 5432),
-      database: env("DATABASE_NAME", "strapi"),
-      user: env("DATABASE_USERNAME", ""),
-      password: env("DATABASE_PASSWORD", ""),
+      database: env("DATABASE_NAME", "sugar-backendapp-dbinstance-cnih3mh6qrnl"),
+      user: env("DATABASE_USERNAME", "sugarDb"),
+      password: env("DATABASE_PASSWORD", "Sugarcoach2023!"),
     },
     useNullAsDefault: true,
   },
 });
-
 /*
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'postgres');
+  const client = env('DATABASE_CLIENT', 'mysql');
 
   const connections = {
     mysql: {
