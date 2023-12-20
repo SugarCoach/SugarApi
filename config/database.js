@@ -23,7 +23,7 @@ module.exports = ({ env }) => ({
       port: 15885,
       database: "railway",
       user: "postgres",
-      password: "4d1e6B*eEf6dgA5CG-dgDega51c1E3F5!",
+      password: "4d1e6B*eEf6dgA5CG-dgDega51c1E3F5",
     },
     useNullAsDefault: true,
   },
