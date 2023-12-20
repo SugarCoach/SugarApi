@@ -6,11 +6,11 @@ module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
     connection: {
-      host: env("DATABASE_HOST", "sugar-backendapp-dbinstance-cnih3mh6qrnl.cmoghtwgghmz.us-east-1.rds.amazonaws.com"),
-      port: env.int("DATABASE_PORT", 5432),
-      database: env("DATABASE_NAME", "sugar-backendapp-dbinstance-cnih3mh6qrnl"),
-      user: env("DATABASE_USERNAME", "sugarDb"),
-      password: env("DATABASE_PASSWORD", "Sugarcoach2023!"),
+      host: "sugar-backendapp-dbinstance-cnih3mh6qrnl.cmoghtwgghmz.us-east-1.rds.amazonaws.com",
+      port: 5432,
+      database: "sugar-backendapp-dbinstance-cnih3mh6qrnl",
+      user: "sugarDb",
+      password: "Sugarcoach2023!",
     },
     useNullAsDefault: true,
   },
