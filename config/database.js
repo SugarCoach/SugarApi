@@ -19,11 +19,11 @@ module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
     connection: {
-      host: "sugar-backendarchitecture-dbinstance-v4h4cm75jlv9.cmoghtwgghmz.us-east-1.rds.amazonaws.com",
-      port: 5432,
-      database: "sugar-backendarchitecture-dbinstance-v4h4cm75jlv9",
-      user: "sugarDb",
-      password: "Sugarcoach2023!",
+      host: "viaduct.proxy.rlwy.net",
+      port: 15885,
+      database: "railway",
+      user: "postgres",
+      password: "4d1e6B*eEf6dgA5CG-dgDega51c1E3F5!",
     },
     useNullAsDefault: true,
   },
