@@ -25,7 +25,13 @@ module.exports = ({ env }) => ({
       user: env("DATABASE_USERNAME", "sugarDb"),
       password: env("DATABASE_PASSWORD", "Sugarcoach2023!"),
     },
+    ssl:{
+      rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false)
+    },
     useNullAsDefault: true,
+    options:{
+      ssl: env.bool('DATABASE_SSL', false),
+    },
   },
 });
 /*
