@@ -30,7 +30,7 @@ module.exports = ({ env }) => ({
     },
     useNullAsDefault: true,
     options:{
-      ssl: env.bool('DATABASE_SSL', false),
+      ssl: env.bool('DATABASE_SSL', true),
     },
   },
 });
