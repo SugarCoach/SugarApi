@@ -6,29 +6,3 @@
     "allowJs": true
   }
 }
-module.exports = {
-  apps: [
-    {
-      name: 'SugarApi', // Your project name
-      cwd: '~/SugarApi', // Path to your project
-      script: 'npm', // For this example we're using npm, could also be yarn
-      args: 'start', // Script to start the Strapi server, `start` by default
-      env: {
-        APP_KEYS: 'SeqstsKofIWNsUPrK95ZQQ==,iP+MLK9dZ8hEd8blPRFENw==,rcm1NFt7RIlQfzDVpGWwmw==,UDhz02ffQSnrLKGARZLQ5g==', // you can find it in your project .env file.
-        API_TOKEN_SALT: '9wDIACYJfzDrWp/U+xyW+Q==',
-        ADMIN_JWT_SECRET: 'wP6umpoC6/UiVqXyeyN8cg==',
-        JWT_SECRET: '4T85IKhtTGOgCbIQvrWxPw==',
-        NODE_ENV: 'production',
-        DATABASE_HOST: 'viaduct.proxy.rlwy.net', // database Endpoint under 'Connectivity & Security' tab
-        DATABASE_PORT: '15885',
-        DATABASE_NAME: 'railway', // DB name under 'Configuration' tab
-        DATABASE_USERNAME: 'postgres', // default username
-        DATABASE_PASSWORD: '4d1e6B*eEf6dgA5CG-dgDega51c1E3F5',
-        AWS_ACCESS_KEY_ID: 'AKIAQ6CUQZB3FDFFC3XK',
-        AWS_ACCESS_SECRET: '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', // Find it in Amazon S3 Dashboard
-        AWS_REGION: 'us-east-1',
-        AWS_BUCKET_NAME: 'sugarapi-bucket',
-      },
-    },
-  ],
-};

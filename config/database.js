@@ -19,11 +19,11 @@ module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
     connection: {
-      host: "viaduct.proxy.rlwy.net",
-      port: 15885,
-      database: "railway",
-      user: "postgres",
-      password: "4d1e6B*eEf6dgA5CG-dgDega51c1E3F5",
+      host: env("DATABASE_HOST", "127.0.0.1"),
+      port: env.int("DATABASE_PORT", 5432),
+      database: env("DATABASE_NAME", "strapi"),
+      user: env("DATABASE_USERNAME", ""),
+      password: env("DATABASE_PASSWORD", ""),
     },
     useNullAsDefault: true,
   },
