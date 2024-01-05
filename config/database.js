@@ -1,6 +1,6 @@
 const path = require('path');
-//const parse = require('pg-connection-string').parse;
-//const config = parse(process.env.DATABASE_URL)
+const parse = require('pg-connection-string').parse;
+const config = parse(process.env.DATABASE_URL)
 /*
 module.exports = ({ env }) => ({
   connection: {
@@ -34,6 +34,7 @@ module.exports = ({ env }) => ({
     },
   },
 });
+//64445c5953bc00a2e6039b3acb24d8fc18017180ccc99f29e30610e040dd55da0b7f4d57036ec86e850c8e3ffb5f38bd2bd7a34b5a377852de8939ca4f0e4603f1d724378d6c7d495c879ece2005ff162692b1c4c61d11fd18430511eab32f637f7442322255bbe47a1f828bc433367d99c6a421e3394bba38acc038edf6edaa
 /*
 module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'mysql');
@@ -124,4 +125,5 @@ module.exports = ({ env }) => {
       acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
   };
-};*/
+};
+*/
