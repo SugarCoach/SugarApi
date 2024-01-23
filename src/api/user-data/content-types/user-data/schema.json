@@ -38,6 +38,9 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "user_datum"
+    },
+    "sugar_points": {
+      "type": "integer"
     }
   }
 }

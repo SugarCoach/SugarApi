@@ -478,6 +478,7 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    sugar_points: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
