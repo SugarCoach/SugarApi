@@ -371,7 +371,7 @@ export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     glucose: Attribute.Decimal;
@@ -391,7 +391,6 @@ export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
     excercise: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::daily-register.daily-register',
       'oneToOne',
@@ -416,7 +415,7 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     bomb: Attribute.Boolean;
@@ -438,7 +437,6 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::treatment.treatment',
       'oneToOne',
@@ -463,7 +461,7 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String;
@@ -481,7 +479,6 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
     sugar_points: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::user-data.user-data',
       'oneToOne',
