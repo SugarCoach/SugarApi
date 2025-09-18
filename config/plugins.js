@@ -1,4 +1,6 @@
+// config/plugins.js
 module.exports = ({ env }) => ({
+  // ⚙️ Deja tu configuración actual de S3 tal cual
   upload: {
     config: {
       provider: 'aws-s3',
@@ -10,17 +12,23 @@ module.exports = ({ env }) => ({
           params: {
             Bucket: env('AWS_BUCKET_NAME'),
           },
-        }
+        },
       },
-      // These parameters could solve issues with ACL public-read access — see [this issue](https://github.com/strapi/strapi/issues/5868) for details
+      // Estos parámetros ayudan con ACL public-read (issue #5868)
       actionOptions: {
         upload: {
-          ACL: null
+          ACL: null,
         },
         uploadStream: {
-          ACL: null
+          ACL: null,
         },
-      }
+      },
     },
-  }
+  },
+
+  // 🧩 Habilita el Content-Type Builder en staging
+  // Si quieres solo en desarrollo: enabled: env('NODE_ENV') === 'development'
+  'content-type-builder': {
+    enabled: true,
+  },
 });
