@@ -6,4 +6,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::treatment_basal_hora.treatment_basal_hora');
+module.exports = createCoreRouter('api::treatment-basal-hora.treatment-basal-hora');

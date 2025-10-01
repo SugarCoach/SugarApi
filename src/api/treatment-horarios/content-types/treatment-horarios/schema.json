@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "treatment_basal_hora",
+  "collectionName": "treatment_horarios",
   "info": {
-    "singularName": "treatment_basal_hora",
-    "pluralName": "treatment_basal_horas",
-    "displayName": "Treatment Basal Hora",
+    "singularName": "treatment-horario",
+    "pluralName": "treatment-horarios",
+    "displayName": "Treatment Horarios",
     "description": ""
   },
   "options": {
@@ -12,8 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "time": {
+    "category": {
       "type": "integer"
+    },
+    "selected": {
+      "type": "boolean"
     },
     "units": {
       "type": "decimal"
@@ -21,8 +24,8 @@
     "treatment": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::treament.treament",
-      "inversedBy": "treament_basal_horas"
+      "target": "api::treatment.treatment",
+      "inversedBy": "treatment_horarios"
     }
   }
 }

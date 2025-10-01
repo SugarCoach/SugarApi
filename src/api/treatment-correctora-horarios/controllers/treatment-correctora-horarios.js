@@ -6,4 +6,4 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::treatment_correctora_horarios.treatment_correctora_horarios');
+module.exports = createCoreController('api::treatment-correctora-horarios.treatment-correctora-horarios');

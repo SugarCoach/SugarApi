@@ -6,4 +6,4 @@
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::treatment_basal_hora.treatment_basal_hora');
+module.exports = createCoreService('api::treatment-basal-hora.treatment-basal-hora');
