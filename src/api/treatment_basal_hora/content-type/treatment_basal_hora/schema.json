@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "treatment_basal_horas",
+  "info": {
+    "singularName": "treatment_basal_hora",
+    "pluralName": "treatment_basal_horas",
+    "displayName": "Treatment Basal Hora",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "integer"
+    },
+    "units": {
+      "type": "decimal"
+    },
+    "treatment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::treament.treament",
+      "inversedBy": "treament_basal_horas"
+    }
+  }
+}
