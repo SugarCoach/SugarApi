@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "treament_correctora_horarios",
   "info": {
-    "singularName": "treament-correctora-horarios",
+    "singularName": "treament-correctora-horario",
     "pluralName": "treament-correctora-horarios",
     "displayName": "Treament Correctora Horarios",
     "description": ""

@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "treatment_basal_horas",
+  "collectionName": "treatment_basal_hora",
   "info": {
     "singularName": "treatment_basal_hora",
     "pluralName": "treatment_basal_horas",

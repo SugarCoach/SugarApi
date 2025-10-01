@@ -19,7 +19,7 @@
       "type": "boolean"
     },
     "units": {
-      "type": "double"
+      "type": "decimal"
     },
     "treatment": {
       "type": "relation",
