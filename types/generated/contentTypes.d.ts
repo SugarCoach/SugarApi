@@ -362,138 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
-  collectionName: 'daily_registers';
-  info: {
-    singularName: 'daily-register';
-    pluralName: 'daily-registers';
-    displayName: 'Daily Register';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    glucose: Attribute.Decimal;
-    insulin: Attribute.Decimal;
-    carbohydrates: Attribute.Decimal;
-    comment: Attribute.String;
-    photo: Attribute.Media;
-    basal: Attribute.Decimal;
-    colors: Attribute.String;
-    category: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    emotional_state: Attribute.String;
-    excercise: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTreatmentTreatment extends Schema.CollectionType {
-  collectionName: 'treatments';
-  info: {
-    singularName: 'treatment';
-    pluralName: 'treatments';
-    displayName: 'Treatment';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    bomb: Attribute.Boolean;
-    object_glucose: Attribute.Decimal;
-    correctora_unit: Attribute.Decimal;
-    hyperglucose: Attribute.Decimal;
-    hipoglucose: Attribute.Decimal;
-    correctora: Attribute.Decimal;
-    insulina_unit: Attribute.Decimal;
-    carbono: Attribute.Decimal;
-    basal_insuline: Attribute.String;
-    medidor: Attribute.String;
-    bomba_infusora: Attribute.String;
-    correctora_insuline: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUserDataUserData extends Schema.CollectionType {
-  collectionName: 'users_data';
-  info: {
-    singularName: 'user-data';
-    pluralName: 'users-data';
-    displayName: 'User Data';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    birth_date: Attribute.String;
-    sex: Attribute.String;
-    height: Attribute.Decimal;
-    weight: Attribute.Decimal;
-    debut_date: Attribute.String;
-    icon: Attribute.Integer;
-    users_permissions_user: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    sugar_points: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -820,6 +688,267 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
+  collectionName: 'daily_registers';
+  info: {
+    singularName: 'daily-register';
+    pluralName: 'daily-registers';
+    displayName: 'Daily Register';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    glucose: Attribute.Decimal;
+    insulin: Attribute.Decimal;
+    carbohydrates: Attribute.Decimal;
+    comment: Attribute.String;
+    photo: Attribute.Media;
+    basal: Attribute.Decimal;
+    colors: Attribute.String;
+    category: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    emotional_state: Attribute.String;
+    excercise: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentTreatment extends Schema.CollectionType {
+  collectionName: 'treatments';
+  info: {
+    singularName: 'treatment';
+    pluralName: 'treatments';
+    displayName: 'Treatment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    bomb: Attribute.Boolean;
+    object_glucose: Attribute.Decimal;
+    correctora_unit: Attribute.Decimal;
+    hyperglucose: Attribute.Decimal;
+    hipoglucose: Attribute.Decimal;
+    correctora: Attribute.Decimal;
+    insulina_unit: Attribute.Decimal;
+    carbono: Attribute.Decimal;
+    basal_insuline: Attribute.String;
+    medidor: Attribute.String;
+    bomba_infusora: Attribute.String;
+    correctora_insuline: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    treatment_correctora_horario: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-correctora-horario.treatment-correctora-horario'
+    >;
+    treatment_horario: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-horario.treatment-horario'
+    >;
+    treatment_basal_hora: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-basal-hora.treatment-basal-hora'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentBasalHoraTreatmentBasalHora
+  extends Schema.CollectionType {
+  collectionName: 'treatment_basal_horas';
+  info: {
+    singularName: 'treatment-basal-hora';
+    pluralName: 'treatment-basal-horas';
+    displayName: 'Treatment Basal Hora';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    time: Attribute.Integer;
+    treatment: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    units: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentCorrectoraHorarioTreatmentCorrectoraHorario
+  extends Schema.CollectionType {
+  collectionName: 'treatment_correctora_horarios';
+  info: {
+    singularName: 'treatment-correctora-horario';
+    pluralName: 'treatment-correctora-horarios';
+    displayName: 'Treatment Correctora Horario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.Integer;
+    selected: Attribute.Boolean;
+    treatment: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentHorarioTreatmentHorario
+  extends Schema.CollectionType {
+  collectionName: 'treatment_horarios';
+  info: {
+    singularName: 'treatment-horario';
+    pluralName: 'treatment-horarios';
+    displayName: 'Treatment Horario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.Integer;
+    selected: Attribute.Boolean;
+    units: Attribute.Decimal;
+    treatment: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserDataUserData extends Schema.CollectionType {
+  collectionName: 'users_data';
+  info: {
+    singularName: 'user-data';
+    pluralName: 'users-data';
+    displayName: 'User Data';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    birth_date: Attribute.String;
+    sex: Attribute.String;
+    height: Attribute.Decimal;
+    weight: Attribute.Decimal;
+    debut_date: Attribute.String;
+    icon: Attribute.Integer;
+    users_permissions_user: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    sugar_points: Attribute.Integer;
+    account_type: Attribute.String;
+    nickname: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -830,15 +959,18 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
-      'api::treatment.treatment': ApiTreatmentTreatment;
-      'api::user-data.user-data': ApiUserDataUserData;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
+      'api::treatment.treatment': ApiTreatmentTreatment;
+      'api::treatment-basal-hora.treatment-basal-hora': ApiTreatmentBasalHoraTreatmentBasalHora;
+      'api::treatment-correctora-horario.treatment-correctora-horario': ApiTreatmentCorrectoraHorarioTreatmentCorrectoraHorario;
+      'api::treatment-horario.treatment-horario': ApiTreatmentHorarioTreatmentHorario;
+      'api::user-data.user-data': ApiUserDataUserData;
     }
   }
 }

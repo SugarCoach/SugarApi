@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "treatment_correctora_horarios",
+  "info": {
+    "singularName": "treatment-correctora-horario",
+    "pluralName": "treatment-correctora-horarios",
+    "displayName": "Treatment Correctora Horario"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category": {
+      "type": "integer"
+    },
+    "selected": {
+      "type": "boolean"
+    },
+    "treatment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment.treatment",
+      "inversedBy": "treatment_correctora_horario"
+    }
+  }
+}
