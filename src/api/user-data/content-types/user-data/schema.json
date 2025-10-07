@@ -42,5 +42,11 @@
     "sugar_points": {
       "type": "integer"
     }
-  }
+  },
+    "account_type": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    }
 }
