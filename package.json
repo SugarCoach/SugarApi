@@ -18,8 +18,12 @@
     "better-sqlite3": "8.6.0",
     "node-postgres": "^0.6.2",
     "pg": "^8.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^5.3.4",
     "strapi-advanced-uuid": "^1.1.4",
-    "strapi-connector-firestore": "^3.0.0-alpha.47"
+    "strapi-connector-firestore": "^3.0.0-alpha.47",
+    "styled-components": "^5.3.11"
   },
   "author": {
     "name": "A Strapi developer"
@@ -27,9 +31,9 @@
   "strapi": {
     "uuid": "7d02250d-1224-4405-97ef-b79b18e3571a"
   },
-   "engines": {
-  "node": "18.x",
-  "npm": ">=9"
+  "engines": {
+    "node": "18.x",
+    "npm": ">=9"
   },
   "license": "MIT"
 }

@@ -56,23 +56,12 @@ module.exports = ({ env }) => ({
 });*/
 
 // config/database.js (Strapi v4)
-/*module.exports = ({ env }) => ({
+module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     // Una sola URL: postgres://user:pass@host:25060/db?sslmode=require
     connection: env('DATABASE_URL'),
     ssl: { rejectUnauthorized: false }, // DO Managed PG usa SSL
     pool: { min: 0, max: 10 },
-  },
-});*/
-
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'postgres',
-    connection: {
-      connectionString: env('DATABASE_URL'),
-      ssl: { rejectUnauthorized: false },
-    },
-    pool: { min: 2, max: 10 },
   },
 });
