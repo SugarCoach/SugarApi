@@ -477,6 +477,9 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     sugar_points: Attribute.Integer;
+    account_type: Attribute.String;
+    nickname: Attribute.String;
+    number: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

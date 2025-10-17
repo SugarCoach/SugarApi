@@ -47,6 +47,9 @@
     },
     "nickname": {
       "type": "string"
+    },
+    "number": {
+      "type": "string"
     }
   }
 }
