@@ -2,38 +2,25 @@
   "name": "sugar-api",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "build": "strapi build"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.14.5",
+    "@strapi/strapi": "4.14.5",
+    "@strapi/plugin-graphql": "4.14.5",
     "@strapi/plugin-i18n": "4.14.5",
     "@strapi/plugin-users-permissions": "4.14.5",
-    "@strapi/provider-upload-aws-s3": "^4.15.5",
-    "@strapi/strapi": "4.14.5",
-    "better-sqlite3": "8.6.0",
-    "node-postgres": "^0.6.2",
+    "@strapi/provider-upload-aws-s3": "4.14.5",
     "pg": "^8.11.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^5.3.4",
+    "better-sqlite3": "8.6.0",
+    "styled-components": "5.3.3",
     "strapi-advanced-uuid": "^1.1.4",
-    "strapi-connector-firestore": "^3.0.0-alpha.47",
-    "styled-components": "^5.3.11"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "7d02250d-1224-4405-97ef-b79b18e3571a"
+    "strapi-connector-firestore": "^3.0.0-alpha.47"
   },
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": ">=9"
-  },
-  "license": "MIT"
+  }
 }
