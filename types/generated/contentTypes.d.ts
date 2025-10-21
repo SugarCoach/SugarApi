@@ -406,6 +406,42 @@ export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
   };
 }
 
+export interface ApiTokenQrTokenQr extends Schema.CollectionType {
+  collectionName: 'token_qrs';
+  info: {
+    singularName: 'token-qr';
+    pluralName: 'token-qrs';
+    displayName: 'Token QR';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tokenTemporal: Attribute.Text;
+    expireTime: Attribute.BigInteger;
+    user_datum: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'api::user-data.user-data'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTreatmentTreatment extends Schema.CollectionType {
   collectionName: 'treatments';
   info: {
@@ -480,6 +516,11 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
     account_type: Attribute.String;
     nickname: Attribute.String;
     number: Attribute.String;
+    token_qr: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'api::token-qr.token-qr'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -834,6 +875,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
+      'api::token-qr.token-qr': ApiTokenQrTokenQr;
       'api::treatment.treatment': ApiTreatmentTreatment;
       'api::user-data.user-data': ApiUserDataUserData;
       'plugin::upload.file': PluginUploadFile;

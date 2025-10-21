@@ -50,6 +50,12 @@
     },
     "number": {
       "type": "string"
+    },
+    "token_qr": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::token-qr.token-qr",
+      "mappedBy": "user_datum"
     }
   }
 }
