@@ -83,6 +83,12 @@
       "relation": "oneToOne",
       "target": "api::user-data.user-data",
       "mappedBy": "users_permissions_user"
+    },
+    "dexcom_token": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dexcom-token.dexcom-token",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

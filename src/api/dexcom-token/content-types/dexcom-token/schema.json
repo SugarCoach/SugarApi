@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dexcom_tokens",
+  "info": {
+    "singularName": "dexcom-token",
+    "pluralName": "dexcom-tokens",
+    "displayName": "Dexcom Token"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accessToken": {
+      "type": "text"
+    },
+    "refreshToken": {
+      "type": "text"
+    },
+    "expiresIn": {
+      "type": "integer"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "dexcom_token"
+    }
+  }
+}
