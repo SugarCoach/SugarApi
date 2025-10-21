@@ -362,182 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
-  collectionName: 'daily_registers';
-  info: {
-    singularName: 'daily-register';
-    pluralName: 'daily-registers';
-    displayName: 'Daily Register';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    glucose: Attribute.Decimal;
-    insulin: Attribute.Decimal;
-    carbohydrates: Attribute.Decimal;
-    comment: Attribute.String;
-    photo: Attribute.Media;
-    basal: Attribute.Decimal;
-    colors: Attribute.String;
-    category: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    emotional_state: Attribute.String;
-    excercise: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::daily-register.daily-register',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTokenQrTokenQr extends Schema.CollectionType {
-  collectionName: 'token_qrs';
-  info: {
-    singularName: 'token-qr';
-    pluralName: 'token-qrs';
-    displayName: 'Token QR';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    tokenTemporal: Attribute.Text;
-    expireTime: Attribute.BigInteger;
-    user_datum: Attribute.Relation<
-      'api::token-qr.token-qr',
-      'oneToOne',
-      'api::user-data.user-data'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::token-qr.token-qr',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::token-qr.token-qr',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTreatmentTreatment extends Schema.CollectionType {
-  collectionName: 'treatments';
-  info: {
-    singularName: 'treatment';
-    pluralName: 'treatments';
-    displayName: 'Treatment';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    bomb: Attribute.Boolean;
-    object_glucose: Attribute.Decimal;
-    correctora_unit: Attribute.Decimal;
-    hyperglucose: Attribute.Decimal;
-    hipoglucose: Attribute.Decimal;
-    correctora: Attribute.Decimal;
-    insulina_unit: Attribute.Decimal;
-    carbono: Attribute.Decimal;
-    basal_insuline: Attribute.String;
-    medidor: Attribute.String;
-    bomba_infusora: Attribute.String;
-    correctora_insuline: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::treatment.treatment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUserDataUserData extends Schema.CollectionType {
-  collectionName: 'users_data';
-  info: {
-    singularName: 'user-data';
-    pluralName: 'users-data';
-    displayName: 'User Data';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    birth_date: Attribute.String;
-    sex: Attribute.String;
-    height: Attribute.Decimal;
-    weight: Attribute.Decimal;
-    debut_date: Attribute.String;
-    icon: Attribute.Integer;
-    users_permissions_user: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    sugar_points: Attribute.Integer;
-    account_type: Attribute.String;
-    nickname: Attribute.String;
-    number: Attribute.String;
-    token_qr: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'api::token-qr.token-qr'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::user-data.user-data',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -847,6 +671,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::user-data.user-data'
     >;
+    dexcom_token: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::dexcom-token.dexcom-token'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -864,6 +693,219 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDailyRegisterDailyRegister extends Schema.CollectionType {
+  collectionName: 'daily_registers';
+  info: {
+    singularName: 'daily-register';
+    pluralName: 'daily-registers';
+    displayName: 'Daily Register';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    glucose: Attribute.Decimal;
+    insulin: Attribute.Decimal;
+    carbohydrates: Attribute.Decimal;
+    comment: Attribute.String;
+    photo: Attribute.Media;
+    basal: Attribute.Decimal;
+    colors: Attribute.String;
+    category: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    emotional_state: Attribute.String;
+    excercise: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::daily-register.daily-register',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDexcomTokenDexcomToken extends Schema.CollectionType {
+  collectionName: 'dexcom_tokens';
+  info: {
+    singularName: 'dexcom-token';
+    pluralName: 'dexcom-tokens';
+    displayName: 'Dexcom Token';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accessToken: Attribute.Text;
+    refreshToken: Attribute.Text;
+    expiresIn: Attribute.Integer;
+    users_permissions_user: Attribute.Relation<
+      'api::dexcom-token.dexcom-token',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dexcom-token.dexcom-token',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::dexcom-token.dexcom-token',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTokenQrTokenQr extends Schema.CollectionType {
+  collectionName: 'token_qrs';
+  info: {
+    singularName: 'token-qr';
+    pluralName: 'token-qrs';
+    displayName: 'Token QR';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tokenTemporal: Attribute.Text;
+    expireTime: Attribute.BigInteger;
+    user_datum: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'api::user-data.user-data'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::token-qr.token-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentTreatment extends Schema.CollectionType {
+  collectionName: 'treatments';
+  info: {
+    singularName: 'treatment';
+    pluralName: 'treatments';
+    displayName: 'Treatment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    bomb: Attribute.Boolean;
+    object_glucose: Attribute.Decimal;
+    correctora_unit: Attribute.Decimal;
+    hyperglucose: Attribute.Decimal;
+    hipoglucose: Attribute.Decimal;
+    correctora: Attribute.Decimal;
+    insulina_unit: Attribute.Decimal;
+    carbono: Attribute.Decimal;
+    basal_insuline: Attribute.String;
+    medidor: Attribute.String;
+    bomba_infusora: Attribute.String;
+    correctora_insuline: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserDataUserData extends Schema.CollectionType {
+  collectionName: 'users_data';
+  info: {
+    singularName: 'user-data';
+    pluralName: 'users-data';
+    displayName: 'User Data';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    birth_date: Attribute.String;
+    sex: Attribute.String;
+    height: Attribute.Decimal;
+    weight: Attribute.Decimal;
+    debut_date: Attribute.String;
+    icon: Attribute.Integer;
+    users_permissions_user: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    sugar_points: Attribute.Integer;
+    account_type: Attribute.String;
+    nickname: Attribute.String;
+    number: Attribute.String;
+    token_qr: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'api::token-qr.token-qr'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -874,16 +916,17 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
-      'api::token-qr.token-qr': ApiTokenQrTokenQr;
-      'api::treatment.treatment': ApiTreatmentTreatment;
-      'api::user-data.user-data': ApiUserDataUserData;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
+      'api::dexcom-token.dexcom-token': ApiDexcomTokenDexcomToken;
+      'api::token-qr.token-qr': ApiTokenQrTokenQr;
+      'api::treatment.treatment': ApiTreatmentTreatment;
+      'api::user-data.user-data': ApiUserDataUserData;
     }
   }
 }

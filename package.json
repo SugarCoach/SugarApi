@@ -8,16 +8,16 @@
     "build": "strapi build"
   },
   "dependencies": {
-    "@strapi/strapi": "4.14.5",
-    "@strapi/plugin-graphql": "4.14.5",
+    "@strapi/plugin-graphql": "4.25.24",
     "@strapi/plugin-i18n": "4.14.5",
     "@strapi/plugin-users-permissions": "4.14.5",
     "@strapi/provider-upload-aws-s3": "4.14.5",
-    "pg": "^8.11.3",
+    "@strapi/strapi": "4.14.5",
     "better-sqlite3": "8.6.0",
-    "styled-components": "5.3.3",
+    "pg": "^8.11.3",
     "strapi-advanced-uuid": "^1.1.4",
-    "strapi-connector-firestore": "^3.0.0-alpha.47"
+    "strapi-connector-firestore": "^3.0.0-alpha.47",
+    "styled-components": "5.3.3"
   },
   "engines": {
     "node": "20.x",
