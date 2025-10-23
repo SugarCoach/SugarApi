@@ -8,8 +8,6 @@
 
 module.exports = createCoreService('api::dexcom-token.dexcom-token');*/
 
-'use strict';
-
 module.exports = () => ({
   async saveOrUpdate(userId, data) {
     // buscar si ya existe un registro para este usuario
