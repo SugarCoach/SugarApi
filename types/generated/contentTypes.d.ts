@@ -520,6 +520,7 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
       'oneToOne',
       'api::token-qr.token-qr'
     >;
+    number: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
