@@ -66,8 +66,15 @@ module.exports = {
       strapi.log.info(`Successfully saved tokens for user ${state}`);
       return ctx.redirect('sugarcoach://callback?success=true');
     } catch (e) {
-      strapi.log.error('Dexcom token exchange failed', e?.response?.data || e.message);
+      strapi.log.error(
+        'Dexcom token exchange failed',
+        {
+          status: e?.response?.status,
+          data: e?.response?.data,
+        }
+      );
       return ctx.redirect('sugarcoach://callback?error=true');
     }
+
   },
 };
