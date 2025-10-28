@@ -4,28 +4,36 @@
  * dexcom-token service
  */
 
-/*const { createCoreService } = require('@strapi/strapi').factories;
-
-module.exports = createCoreService('api::dexcom-token.dexcom-token');*/
-
-module.exports = () => ({
+module.exports = ({ strapi }) => ({
   async saveOrUpdate(userId, data) {
-    // buscar si ya existe un registro para este usuario
-    const existing = await strapi.db.query('api::dexcom-token.dexcom-token').findOne({
-      where: { user: userId },
-    });
+    strapi.log.info(`Buscando token existente para el usuario: ${userId}`);
+
+    // Buscar por la relación correcta con users_permissions_user
+    const existing = await strapi.db
+      .query('api::dexcom-token.dexcom-token')
+      .findOne({
+        where: { users_permissions_user: userId },
+      });
 
     if (existing) {
-      // actualizar
-      return await strapi.db.query('api::dexcom-token.dexcom-token').update({
-        where: { id: existing.id },
-        data: { ...data, user: userId },
-      });
+      strapi.log.info(`Token existente encontrado (ID: ${existing.id}). Actualizando...`);
+
+      // Actualizar usando el nombre de campo correcto
+      return await strapi.db
+        .query('api::dexcom-token.dexcom-token')
+        .update({
+          where: { id: existing.id },
+          data: { ...data, users_permissions_user: userId },
+        });
     }
 
-    // crear nuevo
-    return await strapi.db.query('api::dexcom-token.dexcom-token').create({
-      data: { ...data, user: userId },
-    });
+    strapi.log.info('No se encontró token existente. Creando uno nuevo...');
+
+    // Crear nuevo registro con el campo correcto
+    return await strapi.db
+      .query('api::dexcom-token.dexcom-token')
+      .create({
+        data: { ...data, users_permissions_user: userId },
+      });
   },
 });
