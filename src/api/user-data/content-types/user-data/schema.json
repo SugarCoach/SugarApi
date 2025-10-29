@@ -68,6 +68,9 @@
       "relation": "oneToOne",
       "target": "api::parenting.parenting",
       "mappedBy": "child_user"
+    },
+    "is_parent": {
+      "type": "boolean"
     }
   }
 }

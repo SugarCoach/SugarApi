@@ -774,6 +774,45 @@ export interface ApiDexcomTokenDexcomToken extends Schema.CollectionType {
   };
 }
 
+export interface ApiParentingParenting extends Schema.CollectionType {
+  collectionName: 'parentings';
+  info: {
+    singularName: 'parenting';
+    pluralName: 'parentings';
+    displayName: 'Parenting';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    parent_user: Attribute.Relation<
+      'api::parenting.parenting',
+      'oneToOne',
+      'api::user-data.user-data'
+    >;
+    child_user: Attribute.Relation<
+      'api::parenting.parenting',
+      'oneToOne',
+      'api::user-data.user-data'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::parenting.parenting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::parenting.parenting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTokenQrTokenQr extends Schema.CollectionType {
   collectionName: 'token_qrs';
   info: {
@@ -889,6 +928,17 @@ export interface ApiUserDataUserData extends Schema.CollectionType {
       'oneToOne',
       'api::token-qr.token-qr'
     >;
+    parenting_parent: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'api::parenting.parenting'
+    >;
+    parenting_child: Attribute.Relation<
+      'api::user-data.user-data',
+      'oneToOne',
+      'api::parenting.parenting'
+    >;
+    is_parent: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -924,6 +974,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::daily-register.daily-register': ApiDailyRegisterDailyRegister;
       'api::dexcom-token.dexcom-token': ApiDexcomTokenDexcomToken;
+      'api::parenting.parenting': ApiParentingParenting;
       'api::token-qr.token-qr': ApiTokenQrTokenQr;
       'api::treatment.treatment': ApiTreatmentTreatment;
       'api::user-data.user-data': ApiUserDataUserData;
