@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "parentings",
+  "info": {
+    "singularName": "parenting",
+    "pluralName": "parentings",
+    "displayName": "Parenting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "parent_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-data.user-data",
+      "inversedBy": "parenting_parent"
+    },
+    "child_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-data.user-data",
+      "inversedBy": "parenting_child"
+    }
+  }
+}

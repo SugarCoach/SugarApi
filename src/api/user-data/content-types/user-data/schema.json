@@ -56,6 +56,18 @@
       "relation": "oneToOne",
       "target": "api::token-qr.token-qr",
       "mappedBy": "user_datum"
+    },
+    "parenting_parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::parenting.parenting",
+      "mappedBy": "parent_user"
+    },
+    "parenting_child": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::parenting.parenting",
+      "mappedBy": "child_user"
     }
   }
 }
