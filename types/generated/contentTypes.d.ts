@@ -878,6 +878,21 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    treatment_basal_hora: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-basal-hora.treatment-basal-hora'
+    >;
+    treatment_horario: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-horario.treatment-horario'
+    >;
+    treatment_correctora_horario: Attribute.Relation<
+      'api::treatment.treatment',
+      'oneToOne',
+      'api::treatment-correctora-horario.treatment-correctora-horario'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -888,6 +903,119 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::treatment.treatment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentBasalHoraTreatmentBasalHora
+  extends Schema.CollectionType {
+  collectionName: 'treatment_basal_horas';
+  info: {
+    singularName: 'treatment-basal-hora';
+    pluralName: 'treatment-basal-horas';
+    displayName: 'Treatment Basal Hora';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    units: Attribute.Decimal;
+    time: Attribute.Time;
+    treatment: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-basal-hora.treatment-basal-hora',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentCorrectoraHorarioTreatmentCorrectoraHorario
+  extends Schema.CollectionType {
+  collectionName: 'treatment_correctora_horarios';
+  info: {
+    singularName: 'treatment-correctora-horario';
+    pluralName: 'treatment-correctora-horarios';
+    displayName: 'Treatment Correctora Horario';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.Text;
+    selected: Attribute.Boolean;
+    treatment: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-correctora-horario.treatment-correctora-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTreatmentHorarioTreatmentHorario
+  extends Schema.CollectionType {
+  collectionName: 'treatment_horarios';
+  info: {
+    singularName: 'treatment-horario';
+    pluralName: 'treatment-horarios';
+    displayName: 'Treatment Horario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    units: Attribute.Decimal;
+    treatment: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
+      'oneToOne',
+      'api::treatment.treatment'
+    >;
+    selected: Attribute.Boolean;
+    category: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::treatment-horario.treatment-horario',
       'oneToOne',
       'admin::user'
     > &
@@ -977,6 +1105,9 @@ declare module '@strapi/types' {
       'api::parenting.parenting': ApiParentingParenting;
       'api::token-qr.token-qr': ApiTokenQrTokenQr;
       'api::treatment.treatment': ApiTreatmentTreatment;
+      'api::treatment-basal-hora.treatment-basal-hora': ApiTreatmentBasalHoraTreatmentBasalHora;
+      'api::treatment-correctora-horario.treatment-correctora-horario': ApiTreatmentCorrectoraHorarioTreatmentCorrectoraHorario;
+      'api::treatment-horario.treatment-horario': ApiTreatmentHorarioTreatmentHorario;
       'api::user-data.user-data': ApiUserDataUserData;
     }
   }

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "treatment_horarios",
+  "info": {
+    "singularName": "treatment-horario",
+    "pluralName": "treatment-horarios",
+    "displayName": "Treatment Horario"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "units": {
+      "type": "decimal"
+    },
+    "treatment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment.treatment",
+      "inversedBy": "treatment_horario"
+    },
+    "selected": {
+      "type": "boolean"
+    },
+    "category": {
+      "type": "text"
+    }
+  }
+}
