@@ -53,6 +53,24 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "treatment"
+    },
+    "treatment_basal_hora": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment-basal-hora.treatment-basal-hora",
+      "mappedBy": "treatment"
+    },
+    "treatment_horario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment-horario.treatment-horario",
+      "mappedBy": "treatment"
+    },
+    "treatment_correctora_horario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::treatment-correctora-horario.treatment-correctora-horario",
+      "mappedBy": "treatment"
     }
   }
 }
