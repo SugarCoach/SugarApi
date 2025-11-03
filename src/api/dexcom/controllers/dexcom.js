@@ -6,10 +6,8 @@ const DEX_BASE =
         ? 'https://api.dexcom.com'
         : 'https://sandbox-api.dexcom.com';
 
-// YYYY-MM-DDTHH:mm:ss en UTC sin 'Z'
 function fmtUTC(date) {
-    const iso = date.toISOString();            // 2025-10-30T18:15:22.123Z
-    return iso.split('.')[0];                  // 2025-10-30T18:15:22
+    return date.toISOString().split('.')[0];
 }
 
 module.exports = {
@@ -21,9 +19,12 @@ module.exports = {
             where: { users_permissions_user: userId },
             select: ['id', 'accessToken', 'refreshToken'],
         });
-        if (!row?.accessToken) { ctx.status = 404; ctx.body = { value: null }; return; }
+        if (!row?.accessToken) {
+            ctx.status = 404;
+            ctx.body = { value: null };
+            return;
+        }
 
-        // Ventana de 3 horas para pruebas
         const end = new Date();
         const start = new Date(end.getTime() - 3 * 60 * 60 * 1000);
         const qs = `startDate=${encodeURIComponent(fmtUTC(start))}&endDate=${encodeURIComponent(fmtUTC(end))}`;
@@ -36,7 +37,7 @@ module.exports = {
                     Accept: 'application/json',
                 },
             });
-            return r.data; // { egvs: [...] }
+            return r.data; 
         };
 
         const refresh = async (rt) => {
@@ -54,6 +55,27 @@ module.exports = {
 
         try {
             const data = await fetchEgvs(row.accessToken);
+
+            // Fallback si no hay egvs en la ventana de 3h
+            if (!Array.isArray(data?.egvs) || data.egvs.length === 0) {
+                strapi.log.info(`Sin lecturas recientes, usando /dataRange para usuario ${userId}`);
+
+                const rangeResp = await axios.get(`${DEX_BASE}/v2/users/self/dataRange`, {
+                    headers: { Authorization: `Bearer ${row.accessToken}`, Accept: 'application/json' },
+                });
+
+                const endStr = rangeResp.data?.egvs?.end?.systemTime;
+                if (endStr) {
+                    const end2 = new Date(endStr);
+                    const start2 = new Date(end2.getTime() - 24 * 60 * 60 * 1000); // -24h
+                    const url2 = `${DEX_BASE}/v2/users/self/egvs?startDate=${encodeURIComponent(fmtUTC(start2))}&endDate=${encodeURIComponent(fmtUTC(end2))}`;
+                    const r2 = await axios.get(url2, {
+                        headers: { Authorization: `Bearer ${row.accessToken}`, Accept: 'application/json' },
+                    });
+                    return respondWithLatest(ctx, r2.data);
+                }
+            }
+
             return respondWithLatest(ctx, data);
         } catch (e) {
             // 401 → refrescar y reintentar una vez
@@ -75,25 +97,30 @@ module.exports = {
                         status: e2?.response?.status,
                         data: e2?.response?.data,
                     });
-                    ctx.status = 502; ctx.body = { value: null }; return;
+                    ctx.status = 502;
+                    ctx.body = { value: null };
+                    return;
                 }
             }
 
-            // Log detallado del fallo original
             strapi.log.error('Dexcom egvs failed', {
                 status: e?.response?.status,
                 data: e?.response?.data,
             });
-            ctx.status = 502; ctx.body = { value: null };
+            ctx.status = 502;
+            ctx.body = { value: null };
         }
     },
 };
 
 function respondWithLatest(ctx, payload) {
     const arr = Array.isArray(payload?.egvs) ? payload.egvs : [];
-    if (!arr.length) { ctx.body = { value: null }; return; }
-    arr.sort((a, b) =>
-        new Date(a.systemTime).getTime() - new Date(b.systemTime).getTime()
+    if (!arr.length) {
+        ctx.body = { value: null };
+        return;
+    }
+    arr.sort(
+        (a, b) => new Date(a.systemTime).getTime() - new Date(b.systemTime).getTime()
     );
     const last = arr[arr.length - 1];
     ctx.body = { value: typeof last?.value === 'number' ? last.value : null };
